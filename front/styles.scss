@@ -1,0 +1,27 @@
+#messageList{
+  width: 200px;
+  height: 200px;
+  overflow: auto;
+  display:flex; 
+  flex-direction:column;
+}
+
+#alphabet{
+  display: flex;
+}
+  .light {
+    animation: blink 1s steps(2,end);
+  }
+
+@keyframes blink {
+  from{
+    color: black; 
+  }
+  to{
+    color: pink;
+  }
+}
+
+#sendMessage :disabled {
+  cursor: not-allowed;
+}
