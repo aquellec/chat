@@ -9,11 +9,7 @@ body {
 body {
   width: 100%;
   height: 100%;
-  /* background-color: ; */
-  /* background: linear-gradient(180deg, rgba(6, 13, 19, 1) 0%, rgba(6, 13, 19, 1) 50%, rgba(42, 11, 14, 1) 50%, rgba(42, 11, 14, 1) 100%); */
-  /* background-position: center; */
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
+  color: rgba(245, 245, 245, 0.3)
 }
 
 .screen {
@@ -24,12 +20,124 @@ body {
 /* ------------- */
 /* LETTERS */
 #alphabet {
-  /* flex-wrap: wrap; */
+  position: absolute;
+  margin: auto;
+  width: fit-content;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
+/* FIRST ROW */
+.letter.A {
+  top: 3px;
+}
+
+.letter.B {
+  top: 15px;
+}
+
+.letter.C {
+  top: 19px;
+}
+
+.letter.D {
+  top: 25px;
+}
+
+.letter.E {
+  top: 33px;
+}
+
+.letter.F {
+  top: 39px;
+}
+
+.letter.G {
+  top: 50px;
+}
+
+.letter.H {
+  top: 50px;
+}
+
+/* SEC ROW */
+.letter.I {
+  top: 38px;
+}
+
+.letter.J {
+  top: 36px;
+}
+
+.letter.K {
+  top: 30px;
+}
+
+.letter.L {
+  top: 25px;
+}
+
+.letter.M {
+  top: 25px;
+}
+
+.letter.N {
+  top: 25px;
+}
+
+.letter.O {
+  top: 35px;
+}
+
+.letter.P {
+  top: 53px;
+}
+
+.letter.Q {
+  top: 54px;
+}
+
+/* THIRD ROW */
+.letter.R {
+  top: 18px;
+}
+
+.letter.S {
+  top: 16px;
+}
+
+.letter.T {
+  top: 10px;
+}
+
+.letter.U {
+  top: 25px;
+}
+
+.letter.V {
+  top: 36px;
+}
+
+.letter.W {
+  top: 35px;
+}
+
+.letter.X {
+  top: 28px;
+}
+
+.letter.Y {
+  top: 25px;
+}
+
+.letter.Z {
+  top: 30px;
+}
+
+
 .letter img {
-  max-width: 20px;
-  max-height: 30px;
+  max-width: 50px;
+  max-height: 50px;
 }
 
 .letter.off::before {
@@ -40,9 +148,9 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  margin-bottom: 30px;
-  background-color: antiquewhite;
-  position: relative;
+  position: absolute;
+  top: -29px;
+  left: -20%;
 }
 
 .letter.A.on::before,
@@ -52,12 +160,70 @@ body {
 .letter.Q.on::before,
 .letter.U.on::before,
 .letter.Y.on::before {
+  transition: ease 0.4s;
   content: "";
-  width: 30px;
-  height: 30px;
-  background: url("") no-repeat -30px -50px fixed;
-  top: 10px;
-  right: 5px;
+  width: 45px;
+  height: 45px;
+  background-image: url("public/image/lamps/lamp-pink2x.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: absolute;
+  top: -29px;
+  left: -20%;
+}
+
+.letter.B.on::before,
+.letter.F.on::before,
+.letter.J.on::before,
+.letter.N.on::before,
+.letter.R.on::before,
+.letter.V.on::before,
+.letter.Z.on::before {
+  content: "";
+  width: 45px;
+  height: 45px;
+  background-image: url("public/image/lamps/lamp-green2x.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: absolute;
+  top: -29px;
+  left: -20%;
+}
+.letter.C.on::before,
+.letter.G.on::before,
+.letter.K.on::before,
+.letter.O.on::before,
+.letter.S.on::before,
+.letter.W.on::before {
+  content: "";
+  width: 45px;
+  height: 45px;
+  background-image: url("public/image/lamps/lamp-blue2x.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: absolute;
+  top: -29px;
+  left: -20%;
+}
+.letter.D.on::before,
+.letter.H.on::before,
+.letter.L.on::before,
+.letter.P.on::before,
+.letter.T.on::before,
+.letter.X.on::before {
+  content: "";
+  width: 45px;
+  height: 45px;
+  background-image: url("public/image/lamps/lamp-yellow2x.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: absolute;
+  top: -29px;
+  left: -20%;
 }
 
 .row {
@@ -65,12 +231,15 @@ body {
 }
 
 .letter {
+  position: relative;
   width: fit-content;
-  background-color: wheat;
-  margin: 5px 10px;
+  /* background-color: wheat; */
+  margin: 10px 20px;
 }
 
 /* ------------- */
+
+
 #messageList {
   width: 150px;
   height: 119px;
@@ -131,12 +300,25 @@ body {
   border: none;
 }
 
+/* INPUT */
 #messageForm {
-  position: relative;
+  z-index: 100;
+  margin: auto;
+  position: absolute;
   width: min-content;
+  bottom: 85px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+#sendMessage:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px #2e5271;
+  transition: ease-in-out 0.3s;
 }
 
 #sendMessage {
+  transition: ease-out 0.5s;
   position: absolute;
   top: 6px;
   right: 0;
@@ -160,8 +342,10 @@ body {
   left: 50%;
   transform: translate(-50%, 0);
 }
+
 .couch img {
   width: 55vw;
+  min-width: 600px;
 }
 
 .light {
@@ -170,8 +354,10 @@ body {
   bottom: 30px;
   left: 10%;
 }
+
 .light img {
   width: 10vw;
+  min-width: 100px;
 }
 
 .tv {
@@ -188,6 +374,7 @@ body {
   position: absolute;
 }
 
+<<<<<<< HEAD
 .tv button {
   background: none;
   border: none;
@@ -225,6 +412,11 @@ body {
   margin-right: 0;
   margin-top: -300px;
   z-index: 1;
+=======
+.tv img {
+  width: 25vw;
+  min-width: 300px;
+>>>>>>> 2529c32d9804c241c8091e58ebca96db420fa89f
 }
 
 /* Particules */
