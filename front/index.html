@@ -1,65 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat box</title>
-  <link href="styles.css" rel="stylesheet">
-</head>
-<body>
-  <form id="pseudoForm">
-  <label>pseudo</label>
-  <input type="text" id="pseudo">
-  <button id="sendPseudo" type="submit">send pseudo</button>
-  </form>
+    <title>Chat box</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <form id="pseudoForm">
+      <label>pseudo</label>
+      <input type="text" id="pseudo" />
+      <button id="sendPseudo" type="submit">send pseudo</button>
+    </form>
 
-  <div id='messageList'></div>
+    <div id="messageList"></div>
 
-  <form id="messageForm">
-  <input 
-  id='message' 
-  name="message"
-  maxlength="8"
-  ></input>
-  <span class="customLabel"></span>
-  <button id="sendMessage">send message</button>
-  </form>
+    <form id="messageForm">
+      <input id="message" name="message" />
+      <p id="result"></p>
+      <button id="sendMessage">
+        <svg
+          width="50"
+          height="50"
+          viewBox="0 0 26 26"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="good"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M13.0002 25.8C20.0694 25.8 25.8002 20.0692 25.8002 13C25.8002 5.93075 20.0694 0.199997 13.0002 0.199997C5.93095 0.199997 0.200195 5.93075 0.200195 13C0.200195 20.0692 5.93095 25.8 13.0002 25.8ZM18.9316 11.8686L14.1316 7.06863C13.5067 6.44379 12.4937 6.44379 11.8688 7.06863L7.06882 11.8686C6.44399 12.4935 6.44399 13.5065 7.06882 14.1314C7.69366 14.7562 8.70673 14.7562 9.33157 14.1314L11.4002 12.0627L11.4002 17.8C11.4002 18.6837 12.1165 19.4 13.0002 19.4C13.8839 19.4 14.6002 18.6837 14.6002 17.8V12.0627L16.6688 14.1314C17.2937 14.7562 18.3067 14.7562 18.9316 14.1314C19.5564 13.5065 19.5564 12.4935 18.9316 11.8686Z"
+            fill="#192A3E"
+          />
+          <path class="wrong" fill-rule="evenodd" clip-rule="evenodd" d="M13.0002 25.8C20.0694 25.8 25.8002 20.0693 25.8002 13C25.8002 5.93077 20.0694 0.200012 13.0002 0.200012C5.93095 0.200012 0.200195 5.93077 0.200195 13C0.200195 20.0693 5.93095 25.8 13.0002 25.8ZM10.9316 8.66864C10.3067 8.0438 9.29366 8.0438 8.66882 8.66864C8.04399 9.29348 8.04399 10.3065 8.66882 10.9314L10.7375 13L8.66882 15.0686C8.04399 15.6935 8.04399 16.7065 8.66882 17.3314C9.29366 17.9562 10.3067 17.9562 10.9316 17.3314L13.0002 15.2628L15.0688 17.3314C15.6937 17.9562 16.7067 17.9562 17.3316 17.3314C17.9564 16.7065 17.9564 15.6935 17.3316 15.0686L15.2629 13L17.3316 10.9314C17.9564 10.3065 17.9564 9.29348 17.3316 8.66864C16.7067 8.0438 15.6937 8.0438 15.0688 8.66864L13.0002 10.7373L10.9316 8.66864Z" fill="#6C0D13"/>
+        </svg>
+      </button>
+    </form>
 
-  <div id="alphabet">
-    <div>A</div>
-    <div>B</div>
-    <div>C</div>
-    <div>D</div>
-    <div>E</div>
-    <div>F</div>
-    <div>G</div>
-    <div>H</div>
-    <div>I</div>
-    <div>J</div>
-    <div>K</div>
-    <div>L</div>
-    <div>M</div>
-    <div>N</div>
-    <div>O</div>
-    <div>P</div>
-    <div>Q</div>
-    <div>R</div>
-    <div>S</div>
-    <div>T</div>
-    <div>U</div>
-    <div>V</div>
-    <div>W</div>
-    <div>X</div>
-    <div>Y</div>
-    <div>Z</div>
-  </div>
-  <div id='userList'></div>
-  
-</body>
-  <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
-  <script src="index.js" ></script>
-  
+    <div id="alphabet">
+      <div>A</div>
+      <div>B</div>
+      <div>C</div>
+      <div>D</div>
+      <div>E</div>
+      <div>F</div>
+      <div>G</div>
+      <div>H</div>
+      <div>I</div>
+      <div>J</div>
+      <div>K</div>
+      <div>L</div>
+      <div>M</div>
+      <div>N</div>
+      <div>O</div>
+      <div>P</div>
+      <div>Q</div>
+      <div>R</div>
+      <div>S</div>
+      <div>T</div>
+      <div>U</div>
+      <div>V</div>
+      <div>W</div>
+      <div>X</div>
+      <div>Y</div>
+      <div>Z</div>
+    </div>
+    <div id="userList"></div>
+  </body>
+  <script
+    src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+    integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+    crossorigin="anonymous"
+  ></script>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"></script>
+  <script
+  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"></script>
+  <script src="index.js"></script>
 </html>
