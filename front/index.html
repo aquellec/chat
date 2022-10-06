@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div>
+  <div class="screen">
 
     <canvas id="canvas">
     </canvas>
@@ -30,43 +30,65 @@
       </form>
 
       <div id="alphabet">
-        <div>A</div>
-        <div>B</div>
-        <div>C</div>
-        <div>D</div>
-        <div>E</div>
-        <div>F</div>
-        <div>G</div>
-        <div>H</div>
-        <div>I</div>
-        <div>J</div>
-        <div>K</div>
-        <div>L</div>
-        <div>M</div>
-        <div>N</div>
-        <div>O</div>
-        <div>P</div>
-        <div>Q</div>
-        <div>R</div>
-        <div>S</div>
-        <div>T</div>
-        <div>U</div>
-        <div>V</div>
-        <div>W</div>
-        <div>X</div>
-        <div>Y</div>
-        <div>Z</div>
+        <div class="row first-row">
+          <div id="A" class="letter A off"></div>
+          <div id="B" class="letter B off"></div>
+          <div id="C" class="letter C off"></div>
+          <div id="D" class="letter D off"></div>
+          <div id="E" class="letter E off"></div>
+          <div id="F" class="letter F off"></div>
+          <div id="G" class="letter G off"></div>
+          <div id="H" class="letter H off"></div>
+        </div>
+        <div class="row sec-row">
+          <div id="I" class="letter I off"></div>
+          <div id="J" class="letter J off"></div>
+          <div id="K" class="letter K off"></div>
+          <div id="L" class="letter L off"></div>
+          <div id="M" class="letter M off"></div>
+          <div id="N" class="letter N off"></div>
+          <div id="O" class="letter O off"></div>
+          <div id="P" class="letter P off"></div>
+          <div id="Q" class="letter Q off"></div>
+        </div>
+        <div class="row third-row">
+          <div id="R" class="letter R off"></div>
+          <div id="S" class="letter S off"></div>
+          <div id="T" class="letter T off"></div>
+          <div id="U" class="letter U off"></div>
+          <div id="V" class="letter V off"></div>
+          <div id="W" class="letter W off"></div>
+          <div id="X" class="letter X off"></div>
+          <div id="Y" class="letter Y off"></div>
+          <div id="Z" class="letter Z off"></div>
+        </div>
       </div>
-      <div id='userList'></div>
+      <div class="light-up">
+        <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/lamp-tv2x.png" />
+      </div>
+      <div class="couch-up">
+        <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/couch-up2x.png" />
+      </div>
+      <div class="tv-up">
+        <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/up-tv2x.png" />
+      </div>
     </div>
 
+
+
     <div class="down">
-      <ul>
-        <li>nom</li>
-        <li>nom</li>
-        <li>nom</li>
-        <li>nom</li>
-      </ul>
+      <div class="light-down">
+        <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/lamp-down2x.png" />
+      </div>
+      <div class="couch-down">
+        <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/couch-down2x.png" />
+      </div>
+      <div class="tv-down">
+        <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/down-tv2x.png" />
+      </div>
+      <!-- <ul> -->
+      <div id='userList'></div>
+      <!-- </ul> -->
     </div>
   </div>
 </body>

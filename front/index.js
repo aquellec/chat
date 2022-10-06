@@ -51,6 +51,7 @@ socket.on("message", (message) => {
 
 pseudoForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  
   socket.emit("setUsername", pseudo.value);
 });
 
