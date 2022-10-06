@@ -25,6 +25,7 @@ body {
   width: fit-content;
   left: 50%;
   transform: translate(-50%, 0);
+  top: 8%;
 }
 
 /* FIRST ROW */
