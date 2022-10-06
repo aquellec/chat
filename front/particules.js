@@ -93,5 +93,3 @@ window.addEventListener("resize", function () {
 
 loop();
 setInterval(loop, 1000 / 60);
-
-console.log("Particules");
