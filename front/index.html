@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,59 +8,80 @@
   <title>Chat box</title>
   <link href="styles.css" rel="stylesheet">
 </head>
+
 <body>
-  <form id="pseudoForm">
-  <label>pseudo</label>
-  <input type="text" id="pseudo">
-  <button id="sendPseudo" type="submit">send pseudo</button>
-  </form>
+  <div>
 
-  <div id='messageList'></div>
+    <canvas id="canvas">
+    </canvas>
+    <div class="up">
+      <form id="pseudoForm">
+        <label>pseudo</label>
+        <input type="text" id="pseudo">
+        <button id="sendPseudo" type="submit">send pseudo</button>
+      </form>
 
-  <form id="messageForm">
-  <input 
-  id='message' 
-  name="message"
-  maxlength="8"
-  ></input>
-  <span class="customLabel"></span>
-  <button id="sendMessage">send message</button>
-  </form>
+      <div id='messageList'></div>
 
-  <div id="alphabet">
-    <div>A</div>
-    <div>B</div>
-    <div>C</div>
-    <div>D</div>
-    <div>E</div>
-    <div>F</div>
-    <div>G</div>
-    <div>H</div>
-    <div>I</div>
-    <div>J</div>
-    <div>K</div>
-    <div>L</div>
-    <div>M</div>
-    <div>N</div>
-    <div>O</div>
-    <div>P</div>
-    <div>Q</div>
-    <div>R</div>
-    <div>S</div>
-    <div>T</div>
-    <div>U</div>
-    <div>V</div>
-    <div>W</div>
-    <div>X</div>
-    <div>Y</div>
-    <div>Z</div>
+      <form id="messageForm">
+        <input id='message' name="message" maxlength="8"></input>
+        <span class="customLabel"></span>
+        <button id="sendMessage">send message</button>
+      </form>
+
+      <div id="alphabet">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+        <div>E</div>
+        <div>F</div>
+        <div>G</div>
+        <div>H</div>
+        <div>I</div>
+        <div>J</div>
+        <div>K</div>
+        <div>L</div>
+        <div>M</div>
+        <div>N</div>
+        <div>O</div>
+        <div>P</div>
+        <div>Q</div>
+        <div>R</div>
+        <div>S</div>
+        <div>T</div>
+        <div>U</div>
+        <div>V</div>
+        <div>W</div>
+        <div>X</div>
+        <div>Y</div>
+        <div>Z</div>
+      </div>
+      <div id='userList'></div>
+    </div>
+
+    <div class="down">
+      <ul>
+        <li>nom</li>
+        <li>nom</li>
+        <li>nom</li>
+        <li>nom</li>
+      </ul>
+    </div>
   </div>
-  <div id='userList'></div>
-  
 </body>
-  <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
-  <script src="index.js" ></script>
-  
+<!-- <script src="/server/index.js"></script> -->
+
+<script src="particules.js"></script>
+<script src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+  integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
+  integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"
+  integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+<script src="index.js"></script>
+<script>
+  console.log("hello");
+</script>
+
 </html>
