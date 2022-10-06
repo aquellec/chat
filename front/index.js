@@ -33,7 +33,7 @@ function asTabs(node) {
   var tabList = document.createElement("div");
   tabs.forEach(function(tab, i) {
     var button = document.createElement("button");
-    button.innerHTML = `<svg class="tv-button tv-button-${i}" width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    button.innerHTML = `<div class="tv-button tv-button-${i}"><svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="20" cy="20" r="20" fill="#192A3E"/>
     <circle cx="20.0002" cy="20" r="12.6316" fill="#101E2B"/>
     </svg>`;
@@ -44,12 +44,40 @@ function asTabs(node) {
   function selectTab(n) {
     tabs.forEach(function(tab, i) {
       if (i == n){
-        document.querySelector(".tv-button-" + i ).innerHTML = `<circle cx="20" cy="20" r="20" fill="#192A3E"/>
-        <circle cx="20.0002" cy="20" r="12.6316" fill="#213B54"/>`
+        // document.querySelector(".tv-button-" + i ).innerHTML = `<svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="#192A3E"/>
+        // <circle cx="20.0002" cy="20" r="12.6316" fill="#213B54"/></svg>`
+        document.querySelector(".tv-button-" + i ).innerHTML = `<svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_130_1086)">
+        <circle cx="20" cy="20" r="20" fill="#192A3E"/>
+        <g filter="url(#filter0_f_130_1086)">
+        <path d="M4.98832 14.4764C8.03927 6.1869 17.234 1.93736 25.5236 4.98832C33.8131 8.03927 38.0626 17.234 35.0117 25.5236C31.9607 33.8131 22.766 38.0626 14.4764 35.0117C6.1869 31.9607 1.93736 22.766 4.98832 14.4764Z" fill="url(#paint0_radial_130_1086)" style="mix-blend-mode:screen"/>
+        <path d="M4.98832 14.4764C8.03927 6.1869 17.234 1.93736 25.5236 4.98832C33.8131 8.03927 38.0626 17.234 35.0117 25.5236C31.9607 33.8131 22.766 38.0626 14.4764 35.0117C6.1869 31.9607 1.93736 22.766 4.98832 14.4764Z" fill="url(#paint1_radial_130_1086)" style="mix-blend-mode:screen"/>
+        </g>
+        <circle cx="20.0002" cy="20" r="12.6316" fill="#1D29FF"/>
+        </g>
+        <defs>
+        <filter id="filter0_f_130_1086" x="-6" y="-6" width="52" height="52" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+        <feGaussianBlur stdDeviation="5" result="effect1_foregroundBlur_130_1086"/>
+        </filter>
+        <radialGradient id="paint0_radial_130_1086" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8.5 25) rotate(-45) scale(29.6985 256.241)">
+        <stop stop-color="#1D1DFF"/>
+        <stop offset="1" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="paint1_radial_130_1086" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(33 21) rotate(-180) scale(26 224.33)">
+        <stop stop-color="#1D1DFF"/>
+        <stop offset="1" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="clip0_130_1086">
+        <rect width="40" height="40" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>`
         tab.style.display = "block";
       }else{
-        document.querySelector(".tv-button-" + i ).innerHTML = `<circle cx="20" cy="20" r="20" fill="#192A3E"/>
-        <circle cx="20.0002" cy="20" r="12.6316" fill="#101E2B"/>`
+        document.querySelector(".tv-button-" + i ).innerHTML = `<svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="#192A3E"/>
+        <circle cx="20.0002" cy="20" r="12.6316" fill="#101E2B"/> </svg>`
         tab.style.display = "none"
       }
     });

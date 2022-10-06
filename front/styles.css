@@ -390,8 +390,8 @@ body {
   margin-left: auto;
   margin-top: 137px;
   display: flex;
-  gap: 10px;
   flex-direction: column;
+  gap: 9px;
   z-index: 2;
 }
 
