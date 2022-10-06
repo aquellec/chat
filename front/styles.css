@@ -358,7 +358,7 @@ body {
   height: 100%;
   position: absolute;
   background-image: url("public/image/background-null@2x.png");
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -10;

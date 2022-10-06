@@ -13,7 +13,6 @@ const one = document.getElementById("one");
 const two = document.getElementById("two");
 const iconGood = document.querySelector(".good")
 const iconWrong = document.querySelector(".wrong")
-
 const alphabet = document.querySelectorAll(".letter");
 
 const specialCaracterRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
@@ -21,6 +20,7 @@ const emojiRegex = /\p{Emoji}/u;
 const emptyRegex = /^ *$/;
 const numberRegex = /\d/;
 var limit = 15;
+var fileAttente = [];
 
 
 function asTabs(node) {
@@ -97,28 +97,9 @@ socket.on("message", (message) => {
   messageList.scrollTo(0, messageList.scrollHeight); // scroller en bas pour voir le dernier message
 
   if (verifyMessage(message.value, limit)) {
+    fileAttente.push(message);
     console.log("on a reçu un message : ", message.value);
-    let letters = message.value.split(""); // séparer les lettres
-    let currentUser = message.user.name;
-    one.textContent = currentUser
-    console.log("alphabet : ", alphabet[0]);
-
-
-    letters.forEach((letter, index) => {
-
-      setTimeout(() => {
-        console.log("letter : ", letter);
-        let letterById = document.getElementById(letter.toUpperCase());
-        console.log("letterById : ", letterById);
-        letterById.classList.remove("off")
-        letterById.classList.add("on")
-
-        setTimeout(() => {
-          letterById.classList.remove("on")
-          letterById.classList.add("off")
-        }, 900);
-      }, index * 1000);
-    });
+    console.log("file d'attente", fileAttente);
   }
 }); // Reçoit l'historique message par message, possibilité de filtrer par ID
 
@@ -195,3 +176,28 @@ message.addEventListener("input", function () {
     isError(false)
   }
 });
+
+function lightning() {
+  console.log("index", i);
+  let letters = msg.value.split(""); // séparer les lettres
+  let currentUser = msg.user.name;
+  one.textContent = currentUser
+
+
+  letters.forEach((letter, index) => {
+
+    setTimeout(() => {
+      let letterById = document.getElementById(letter.toUpperCase());
+      letterById.classList.remove("off")
+      letterById.classList.add("on")
+
+      setTimeout(() => {
+        letterById.classList.remove("on")
+        letterById.classList.add("off")
+      }, 900);
+    }, index * 1000);
+  });
+
+  fileAttente.splice(i, 1)
+
+}
