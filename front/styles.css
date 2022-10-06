@@ -1,17 +1,84 @@
-body, #root {
+html,
+body {
   padding: 0;
   margin: 0;
-  background-color: #1e080a;
+  width: 100%;
+  height: 100%;
 }
 
-.up {
-  color: rgba(245, 245, 245, 0.3);
+body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(6, 13, 19, 1) 0%, rgba(6, 13, 19, 1) 50%, rgba(42, 11, 14, 1) 50%, rgba(42, 11, 14, 1) 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
+.screen {
+  width: 100%;
+  height: 100%;
+}
+
+/* ------------- */
+/* LETTERS */
+#alphabet {
+  /* flex-wrap: wrap; */
+}
+
+.letter.off::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background: url("file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/lamps/lamp-off_12x.png") no-repeat -30px -50px fixed;
+  top: 10px;
+  right: 5px;
+  position: relative;
+  /* display: inline-block; */
+}
+
+.letter.A.on::before,
+.letter.E.on::before,
+.letter.I.on::before,
+.letter.M.on::before,
+.letter.Q.on::before,
+.letter.U.on::before,
+.letter.Y.on::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background: url("") no-repeat -30px -50px fixed;
+  top: 10px;
+  right: 5px;
+  /* position: absolute; */
+  /* display: inline-block; */
+}
+
+.row {
+  display: flex;
+}
+
+.letter {
+  width: 30px;
+  height: 30px;
+  background-color: wheat;
+  margin: 5px 10px;
+}
+
+/* ------------- */
+.up {
+  position: relative;
+  color: rgba(245, 245, 245, 0.3);
+  height: 50%;
+  top: 0;
+  width: 100%;
 }
 
 .down {
+  position: fixed;
   color: rgba(166, 30, 34, 1);
-
+  top: 50%;
+  width: 100%;
 }
 
 #messageList {
@@ -22,9 +89,7 @@ body, #root {
   flex-direction: column;
 }
 
-#alphabet {
-  display: flex;
-}
+
 
 .light {
   animation: blink 1s steps(2, end);
@@ -34,6 +99,7 @@ body, #root {
   from {
     color: black;
   }
+
   to {
     color: pink;
   }
@@ -76,17 +142,75 @@ body, #root {
   text-align: end;
 }
 
-#canvas{
+.couch-up {
+  position: absolute;
+  width: fit-content;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.couch-up img,
+.couch-down img {
+  width: 30vw;
+}
+
+.couch-down {
+  position: absolute;
+  width: fit-content;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.light-up {
+  position: absolute;
+  width: fit-content;
+  bottom: 0;
+  left: 25%;
+}
+
+.light-up img,
+.light-down img {
+  width: 6vw;
+}
+
+.light-down {
+  position: absolute;
+  width: fit-content;
+  top: 0;
+  left: 25%;
+}
+
+.tv-up {
+  position: absolute;
+  width: fit-content;
+  bottom: 0;
+  left: 70%;
+}
+
+.tv-up img,
+.tv-down img {
+  width: 12vw;
+}
+
+.tv-down {
+  position: absolute;
+  width: fit-content;
+  top: 0;
+  left: 70%;
+}
+
+/* Particules */
+#canvas {
   width: 100%;
   height: 100%;
   position: absolute;
-  background-image: url("/Users/lenaeng/GOBELINS/JS/chat/front/public/images/upsidedown2x.png");
+  background-image: url("file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/background-empty2x.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
-  filter: blur(1px);
+  background-size: cover;
   z-index: -10;
 }
 
 /*# sourceMappingURL=styles.css.map */
-
