@@ -9,10 +9,11 @@ body {
 body {
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(6, 13, 19, 1) 0%, rgba(6, 13, 19, 1) 50%, rgba(42, 11, 14, 1) 50%, rgba(42, 11, 14, 1) 100%);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  /* background-color: ; */
+  /* background: linear-gradient(180deg, rgba(6, 13, 19, 1) 0%, rgba(6, 13, 19, 1) 50%, rgba(42, 11, 14, 1) 50%, rgba(42, 11, 14, 1) 100%); */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
 }
 
 .screen {
@@ -26,13 +27,21 @@ body {
   /* flex-wrap: wrap; */
 }
 
+.letter img {
+  max-width: 20px;
+  max-height: 30px;
+}
+
 .letter.off::before {
   content: "";
-  width: 30px;
-  height: 30px;
-  background: url("file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/lamps/lamp-off_12x.png") no-repeat -30px -50px fixed;
-  top: 10px;
-  right: 5px;
+  width: 45px;
+  height: 45px;
+  background-image: url("file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/lamps/lamp-off_12x.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 30px;
+  background-color: antiquewhite;
   position: relative;
   /* display: inline-block; */
 }
@@ -59,14 +68,13 @@ body {
 }
 
 .letter {
-  width: 30px;
-  height: 30px;
+  width: fit-content;
   background-color: wheat;
   margin: 5px 10px;
 }
 
 /* ------------- */
-.up {
+/* .up {
   position: relative;
   color: rgba(245, 245, 245, 0.3);
   height: 50%;
@@ -79,7 +87,7 @@ body {
   color: rgba(166, 30, 34, 1);
   top: 50%;
   width: 100%;
-}
+} */
 
 #messageList {
   width: 200px;
@@ -142,7 +150,9 @@ body {
   text-align: end;
 }
 
-.couch-up {
+
+
+/* .couch-up {
   position: absolute;
   width: fit-content;
   bottom: 0;
@@ -199,14 +209,14 @@ body {
   width: fit-content;
   top: 0;
   left: 70%;
-}
+} */
 
 /* Particules */
 #canvas {
   width: 100%;
   height: 100%;
   position: absolute;
-  background-image: url("file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/background-empty2x.png");
+  background-image: url("file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/background-null@2x.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

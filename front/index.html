@@ -14,12 +14,11 @@
 
     <canvas id="canvas">
     </canvas>
-    <div class="up">
-      <form id="pseudoForm">
-        <label>pseudo</label>
-        <input type="text" id="pseudo">
-        <button id="sendPseudo" type="submit">send pseudo</button>
-      </form>
+    <form id="pseudoForm">
+      <label>pseudo</label>
+      <input type="text" id="pseudo">
+      <button id="sendPseudo" type="submit">send pseudo</button>
+    </form>
 
       <div id="wrapper">
         <div data-tabname="one" id="one">Username</div>
@@ -34,88 +33,90 @@
       <input id="message" name="message" />
       <p id="result"></p>
       <button id="sendMessage">
-        <svg
-          width="50"
-          height="50"
-          viewBox="0 0 26 26"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            class="good"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+        <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+          <path class="good" fill-rule="evenodd" clip-rule="evenodd"
             d="M13.0002 25.8C20.0694 25.8 25.8002 20.0692 25.8002 13C25.8002 5.93075 20.0694 0.199997 13.0002 0.199997C5.93095 0.199997 0.200195 5.93075 0.200195 13C0.200195 20.0692 5.93095 25.8 13.0002 25.8ZM18.9316 11.8686L14.1316 7.06863C13.5067 6.44379 12.4937 6.44379 11.8688 7.06863L7.06882 11.8686C6.44399 12.4935 6.44399 13.5065 7.06882 14.1314C7.69366 14.7562 8.70673 14.7562 9.33157 14.1314L11.4002 12.0627L11.4002 17.8C11.4002 18.6837 12.1165 19.4 13.0002 19.4C13.8839 19.4 14.6002 18.6837 14.6002 17.8V12.0627L16.6688 14.1314C17.2937 14.7562 18.3067 14.7562 18.9316 14.1314C19.5564 13.5065 19.5564 12.4935 18.9316 11.8686Z"
-            fill="#192A3E"
-          />
-          <path class="wrong" fill-rule="evenodd" clip-rule="evenodd" d="M13.0002 25.8C20.0694 25.8 25.8002 20.0693 25.8002 13C25.8002 5.93077 20.0694 0.200012 13.0002 0.200012C5.93095 0.200012 0.200195 5.93077 0.200195 13C0.200195 20.0693 5.93095 25.8 13.0002 25.8ZM10.9316 8.66864C10.3067 8.0438 9.29366 8.0438 8.66882 8.66864C8.04399 9.29348 8.04399 10.3065 8.66882 10.9314L10.7375 13L8.66882 15.0686C8.04399 15.6935 8.04399 16.7065 8.66882 17.3314C9.29366 17.9562 10.3067 17.9562 10.9316 17.3314L13.0002 15.2628L15.0688 17.3314C15.6937 17.9562 16.7067 17.9562 17.3316 17.3314C17.9564 16.7065 17.9564 15.6935 17.3316 15.0686L15.2629 13L17.3316 10.9314C17.9564 10.3065 17.9564 9.29348 17.3316 8.66864C16.7067 8.0438 15.6937 8.0438 15.0688 8.66864L13.0002 10.7373L10.9316 8.66864Z" fill="#6C0D13"/>
+            fill="#192A3E" />
+          <path class="wrong" fill-rule="evenodd" clip-rule="evenodd"
+            d="M13.0002 25.8C20.0694 25.8 25.8002 20.0693 25.8002 13C25.8002 5.93077 20.0694 0.200012 13.0002 0.200012C5.93095 0.200012 0.200195 5.93077 0.200195 13C0.200195 20.0693 5.93095 25.8 13.0002 25.8ZM10.9316 8.66864C10.3067 8.0438 9.29366 8.0438 8.66882 8.66864C8.04399 9.29348 8.04399 10.3065 8.66882 10.9314L10.7375 13L8.66882 15.0686C8.04399 15.6935 8.04399 16.7065 8.66882 17.3314C9.29366 17.9562 10.3067 17.9562 10.9316 17.3314L13.0002 15.2628L15.0688 17.3314C15.6937 17.9562 16.7067 17.9562 17.3316 17.3314C17.9564 16.7065 17.9564 15.6935 17.3316 15.0686L15.2629 13L17.3316 10.9314C17.9564 10.3065 17.9564 9.29348 17.3316 8.66864C16.7067 8.0438 15.6937 8.0438 15.0688 8.66864L13.0002 10.7373L10.9316 8.66864Z"
+            fill="#6C0D13" />
         </svg>
       </button>
     </form>
 
-      <div id="alphabet">
-        <div class="row first-row">
-          <div id="A" class="letter A off"></div>
-          <div id="B" class="letter B off"></div>
-          <div id="C" class="letter C off"></div>
-          <div id="D" class="letter D off"></div>
-          <div id="E" class="letter E off"></div>
-          <div id="F" class="letter F off"></div>
-          <div id="G" class="letter G off"></div>
-          <div id="H" class="letter H off"></div>
-        </div>
-        <div class="row sec-row">
-          <div id="I" class="letter I off"></div>
-          <div id="J" class="letter J off"></div>
-          <div id="K" class="letter K off"></div>
-          <div id="L" class="letter L off"></div>
-          <div id="M" class="letter M off"></div>
-          <div id="N" class="letter N off"></div>
-          <div id="O" class="letter O off"></div>
-          <div id="P" class="letter P off"></div>
-          <div id="Q" class="letter Q off"></div>
-        </div>
-        <div class="row third-row">
-          <div id="R" class="letter R off"></div>
-          <div id="S" class="letter S off"></div>
-          <div id="T" class="letter T off"></div>
-          <div id="U" class="letter U off"></div>
-          <div id="V" class="letter V off"></div>
-          <div id="W" class="letter W off"></div>
-          <div id="X" class="letter X off"></div>
-          <div id="Y" class="letter Y off"></div>
-          <div id="Z" class="letter Z off"></div>
-        </div>
+    <div id="alphabet">
+      <div class="row first-row">
+        <div id="A" class="letter A off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/a@2x.png" /></div>
+        <div id="B" class="letter B off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/b@2x.png" /></div>
+        <div id="C" class="letter C off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/c@2x.png" /></div>
+        <div id="D" class="letter D off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/d@2x.png" /></div>
+        <div id="E" class="letter E off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/e@2x.png" /></div>
+        <div id="F" class="letter F off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/f@2x.png" /></div>
+        <div id="G" class="letter G off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/g@2x.png" /></div>
+        <div id="H" class="letter H off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/h@2x.png" /></div>
       </div>
-      <div class="light-up">
-        <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/lamp-tv2x.png" />
+      <div class="row sec-row">
+        <div id="I" class="letter I off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/i@2x.png" /></div>
+        <div id="J" class="letter J off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/j@2x.png" /></div>
+        <div id="K" class="letter K off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/k@2x.png" /></div>
+        <div id="L" class="letter L off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/l@2x.png" /></div>
+        <div id="M" class="letter M off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/m@2x.png" /></div>
+        <div id="N" class="letter N off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/n@2x.png" /></div>
+        <div id="O" class="letter O off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/o@2x.png" /></div>
+        <div id="P" class="letter P off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/p@2x.png" /></div>
+        <div id="Q" class="letter Q off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/q@2x.png" /></div>
       </div>
-      <div class="couch-up">
-        <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/couch-up2x.png" />
-      </div>
-      <div class="tv-up">
-        <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/up-tv2x.png" />
+      <div class="row third-row">
+        <div id="R" class="letter R off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/r@2x.png" /></div>
+        <div id="S" class="letter S off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/s@2x.png" /></div>
+        <div id="T" class="letter T off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/t@2x.png" /></div>
+        <div id="U" class="letter U off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/u@2x.png" /></div>
+        <div id="V" class="letter V off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/v@2x.png" /></div>
+        <div id="W" class="letter W off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/w@2x.png" /></div>
+        <div id="X" class="letter X off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/x@2x.png" /></div>
+        <div id="Y" class="letter Y off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/y@2x.png" /></div>
+        <div id="Z" class="letter Z off"><img
+            src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image//letters/z@2x.png" /></div>
       </div>
     </div>
-
-
-
-    <div class="down">
-      <div class="light-down">
-        <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/lamp-down2x.png" />
-      </div>
-      <div class="couch-down">
-        <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/couch-down2x.png" />
-      </div>
-      <div class="tv-down">
-        <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/down-tv2x.png" />
-      </div>
-      <!-- <ul> -->
-      <div id='userList'></div>
-      <!-- </ul> -->
+    <div class="light">
+      <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/lamp@2x.png" />
     </div>
+    <div class="couch">
+      <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/couch@2x.png" />
+    </div>
+    <div class="tv">
+      <img src="file:///Users/lenaeng/GOBELINS/JS/chat/front/public/image/tv-one@2x.png" />
+    </div>
+
+    <div id='userList'></div>
   </div>
 </body>
-<!-- <script src="/server/index.js"></script> -->
 
 <script src="particules.js"></script>
 <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"
