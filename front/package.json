@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "watch" :"sass --watch styles.scss styles.css"
+    "watch": "sass --watch styles.scss styles.css"
   },
   "dependencies": {
+    "latinize": "^0.5.0",
     "sass": "^1.55.0",
     "socket.io-client": "^4.5.2"
   }
