@@ -20,12 +20,12 @@
       <button id="sendPseudo" type="submit">send pseudo</button>
     </form>
 
-      <div id="wrapper">
+      <!-- <div id="wrapper">
         <div data-tabname="one" id="one">Username</div>
         <div data-tabname="two" id="two">
           <div id='messageList'></div>
         </div>
-      </div>
+      </div> -->
 
     <form id="messageForm">
       <input placeholder="Maximum 15 caracters" id="message" name="message" />
@@ -109,7 +109,10 @@
       <img src="public/image/couch@2x.png" />
     </div>
     <div class="tv">
-      <img src="public/image/tv-one@2x.png" />
+      <div data-tabname="one" id="one">Username</div>
+      <div data-tabname="two" id="two">
+        <div id='messageList'></div>
+      </div>
     </div>
 
     <div id='userList'></div>

@@ -31,28 +31,36 @@ function asTabs(node) {
       tabs.push(child);
   }
   var tabList = document.createElement("div");
-  tabs.forEach(function (tab, i) {
+  tabs.forEach(function(tab, i) {
     var button = document.createElement("button");
-    button.textContent = tab.getAttribute("data-tabname");
-    button.addEventListener("click", function () { selectTab(i); });
+    button.innerHTML = `<svg class="tv-button tv-button-${i}" width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="20" cy="20" r="20" fill="#192A3E"/>
+    <circle cx="20.0002" cy="20" r="12.6316" fill="#101E2B"/>
+    </svg>`;
+    button.addEventListener("click", function() { selectTab(i); });
     tabList.appendChild(button);
   });
   node.insertBefore(tabList, node.firstChild);
   function selectTab(n) {
-    tabs.forEach(function (tab, i) {
-      if (i == n)
+    tabs.forEach(function(tab, i) {
+      if (i == n){
+        document.querySelector(".tv-button-" + i ).innerHTML = `<circle cx="20" cy="20" r="20" fill="#192A3E"/>
+        <circle cx="20.0002" cy="20" r="12.6316" fill="#213B54"/>`
         tab.style.display = "block";
-      else
-        tab.style.display = "none";
+      }else{
+        document.querySelector(".tv-button-" + i ).innerHTML = `<circle cx="20" cy="20" r="20" fill="#192A3E"/>
+        <circle cx="20.0002" cy="20" r="12.6316" fill="#101E2B"/>`
+        tab.style.display = "none"
+      }
     });
-
+   
   }
   selectTab(0);
 }
-asTabs(document.querySelector("#wrapper"));
+asTabs(document.querySelector(".tv"));
 
 function convertToAscii(string) {
-  const unicodeToAsciiMap = { 'Ⱥ': 'A', 'Æ': 'AE', 'Ꜻ': 'AV', 'Ɓ': 'B', 'Ƀ': 'B', 'Ƃ': 'B', 'Ƈ': 'C', 'Ȼ': 'C', 'Ɗ': 'D', 'ǲ': 'D', 'ǅ': 'D', 'Đ': 'D', 'Ƌ': 'D', 'Ǆ': 'DZ', 'Ɇ': 'E', 'Ꝫ': 'ET', 'Ƒ': 'F', 'Ɠ': 'G', 'Ǥ': 'G', 'Ⱨ': 'H', 'Ħ': 'H', 'Ɨ': 'I', 'Ꝺ': 'D', 'Ꝼ': 'F', 'Ᵹ': 'G', 'Ꞃ': 'R', 'Ꞅ': 'S', 'Ꞇ': 'T', 'Ꝭ': 'IS', 'Ɉ': 'J', 'Ⱪ': 'K', 'Ꝃ': 'K', 'Ƙ': 'K', 'Ꝁ': 'K', 'Ꝅ': 'K', 'Ƚ': 'L', 'Ⱡ': 'L', 'Ꝉ': 'L', 'Ŀ': 'L', 'Ɫ': 'L', 'ǈ': 'L', 'Ł': 'L', 'Ɱ': 'M', 'Ɲ': 'N', 'Ƞ': 'N', 'ǋ': 'N', 'Ꝋ': 'O', 'Ꝍ': 'O', 'Ɵ': 'O', 'Ø': 'O', 'Ƣ': 'OI', 'Ɛ': 'E', 'Ɔ': 'O', 'Ȣ': 'OU', 'Ꝓ': 'P', 'Ƥ': 'P', 'Ꝕ': 'P', 'Ᵽ': 'P', 'Ꝑ': 'P', 'Ꝙ': 'Q', 'Ꝗ': 'Q', 'Ɍ': 'R', 'Ɽ': 'R', 'Ꜿ': 'C', 'Ǝ': 'E', 'Ⱦ': 'T', 'Ƭ': 'T', 'Ʈ': 'T', 'Ŧ': 'T', 'Ɐ': 'A', 'Ꞁ': 'L', 'Ɯ': 'M', 'Ʌ': 'V', 'Ꝟ': 'V', 'Ʋ': 'V', 'Ⱳ': 'W', 'Ƴ': 'Y', 'Ỿ': 'Y', 'Ɏ': 'Y', 'Ⱬ': 'Z', 'Ȥ': 'Z', 'Ƶ': 'Z', 'Œ': 'OE', 'ᴀ': 'A', 'ᴁ': 'AE', 'ʙ': 'B', 'ᴃ': 'B', 'ᴄ': 'C', 'ᴅ': 'D', 'ᴇ': 'E', 'ꜰ': 'F', 'ɢ': 'G', 'ʛ': 'G', 'ʜ': 'H', 'ɪ': 'I', 'ʁ': 'R', 'ᴊ': 'J', 'ᴋ': 'K', 'ʟ': 'L', 'ᴌ': 'L', 'ᴍ': 'M', 'ɴ': 'N', 'ᴏ': 'O', 'ɶ': 'OE', 'ᴐ': 'O', 'ᴕ': 'OU', 'ᴘ': 'P', 'ʀ': 'R', 'ᴎ': 'N', 'ᴙ': 'R', 'ꜱ': 'S', 'ᴛ': 'T', 'ⱻ': 'E', 'ᴚ': 'R', 'ᴜ': 'U', 'ᴠ': 'V', 'ᴡ': 'W', 'ʏ': 'Y', 'ᴢ': 'Z', 'ᶏ': 'a', 'ẚ': 'a', 'ⱥ': 'a', 'æ': 'ae', 'ꜻ': 'av', 'ɓ': 'b', 'ᵬ': 'b', 'ᶀ': 'b', 'ƀ': 'b', 'ƃ': 'b', 'ɵ': 'o', 'ɕ': 'c', 'ƈ': 'c', 'ȼ': 'c', 'ȡ': 'd', 'ɗ': 'd', 'ᶑ': 'd', 'ᵭ': 'd', 'ᶁ': 'd', 'đ': 'd', 'ɖ': 'd', 'ƌ': 'd', 'ı': 'i', 'ȷ': 'j', 'ɟ': 'j', 'ʄ': 'j', 'ǆ': 'dz', 'ⱸ': 'e', 'ᶒ': 'e', 'ɇ': 'e', 'ꝫ': 'et', 'ƒ': 'f', 'ᵮ': 'f', 'ᶂ': 'f', 'ɠ': 'g', 'ᶃ': 'g', 'ǥ': 'g', 'ⱨ': 'h', 'ɦ': 'h', 'ħ': 'h', 'ƕ': 'hv', 'ᶖ': 'i', 'ɨ': 'i', 'ꝺ': 'd', 'ꝼ': 'f', 'ᵹ': 'g', 'ꞃ': 'r', 'ꞅ': 's', 'ꞇ': 't', 'ꝭ': 'is', 'ʝ': 'j', 'ɉ': 'j', 'ⱪ': 'k', 'ꝃ': 'k', 'ƙ': 'k', 'ᶄ': 'k', 'ꝁ': 'k', 'ꝅ': 'k', 'ƚ': 'l', 'ɬ': 'l', 'ȴ': 'l', 'ⱡ': 'l', 'ꝉ': 'l', 'ŀ': 'l', 'ɫ': 'l', 'ᶅ': 'l', 'ɭ': 'l', 'ł': 'l', 'ſ': 's', 'ẜ': 's', 'ẝ': 's', 'ɱ': 'm', 'ᵯ': 'm', 'ᶆ': 'm', 'ȵ': 'n', 'ɲ': 'n', 'ƞ': 'n', 'ᵰ': 'n', 'ᶇ': 'n', 'ɳ': 'n', 'ꝋ': 'o', 'ꝍ': 'o', 'ⱺ': 'o', 'ø': 'o', 'ƣ': 'oi', 'ɛ': 'e', 'ᶓ': 'e', 'ɔ': 'o', 'ᶗ': 'o', 'ȣ': 'ou', 'ꝓ': 'p', 'ƥ': 'p', 'ᵱ': 'p', 'ᶈ': 'p', 'ꝕ': 'p', 'ᵽ': 'p', 'ꝑ': 'p', 'ꝙ': 'q', 'ʠ': 'q', 'ɋ': 'q', 'ꝗ': 'q', 'ɾ': 'r', 'ᵳ': 'r', 'ɼ': 'r', 'ᵲ': 'r', 'ᶉ': 'r', 'ɍ': 'r', 'ɽ': 'r', 'ↄ': 'c', 'ꜿ': 'c', 'ɘ': 'e', 'ɿ': 'r', 'ʂ': 's', 'ᵴ': 's', 'ᶊ': 's', 'ȿ': 's', 'ɡ': 'g', 'ᴑ': 'o', 'ᴓ': 'o', 'ᴝ': 'u', 'ȶ': 't', 'ⱦ': 't', 'ƭ': 't', 'ᵵ': 't', 'ƫ': 't', 'ʈ': 't', 'ŧ': 't', 'ᵺ': 'th', 'ɐ': 'a', 'ᴂ': 'ae', 'ǝ': 'e', 'ᵷ': 'g', 'ɥ': 'h', 'ʮ': 'h', 'ʯ': 'h', 'ᴉ': 'i', 'ʞ': 'k', 'ꞁ': 'l', 'ɯ': 'm', 'ɰ': 'm', 'ᴔ': 'oe', 'ɹ': 'r', 'ɻ': 'r', 'ɺ': 'r', 'ⱹ': 'r', 'ʇ': 't', 'ʌ': 'v', 'ʍ': 'w', 'ʎ': 'y', 'ᶙ': 'u', 'ᵫ': 'ue', 'ꝸ': 'um', 'ⱴ': 'v', 'ꝟ': 'v', 'ʋ': 'v', 'ᶌ': 'v', 'ⱱ': 'v', 'ⱳ': 'w', 'ᶍ': 'x', 'ƴ': 'y', 'ỿ': 'y', 'ɏ': 'y', 'ʑ': 'z', 'ⱬ': 'z', 'ȥ': 'z', 'ᵶ': 'z', 'ᶎ': 'z', 'ʐ': 'z', 'ƶ': 'z', 'ɀ': 'z', 'œ': 'oe', 'ₓ': 'x' };
+  const unicodeToAsciiMap = {'Ⱥ':'A','Æ':'AE','Ꜻ':'AV','Ɓ':'B','Ƀ':'B','Ƃ':'B','Ƈ':'C','Ȼ':'C','Ɗ':'D','ǲ':'D','ǅ':'D','Đ':'D','Ƌ':'D','Ǆ':'DZ','Ɇ':'E','Ꝫ':'ET','Ƒ':'F','Ɠ':'G','Ǥ':'G','Ⱨ':'H','Ħ':'H','Ɨ':'I','Ꝺ':'D','Ꝼ':'F','Ᵹ':'G','Ꞃ':'R','Ꞅ':'S','Ꞇ':'T','Ꝭ':'IS','Ɉ':'J','Ⱪ':'K','Ꝃ':'K','Ƙ':'K','Ꝁ':'K','Ꝅ':'K','Ƚ':'L','Ⱡ':'L','Ꝉ':'L','Ŀ':'L','Ɫ':'L','ǈ':'L','Ł':'L','Ɱ':'M','Ɲ':'N','Ƞ':'N','ǋ':'N','Ꝋ':'O','Ꝍ':'O','Ɵ':'O','Ø':'O','Ƣ':'OI','Ɛ':'E','Ɔ':'O','Ȣ':'OU','Ꝓ':'P','Ƥ':'P','Ꝕ':'P','Ᵽ':'P','Ꝑ':'P','Ꝙ':'Q','Ꝗ':'Q','Ɍ':'R','Ɽ':'R','Ꜿ':'C','Ǝ':'E','Ⱦ':'T','Ƭ':'T','Ʈ':'T','Ŧ':'T','Ɐ':'A','Ꞁ':'L','Ɯ':'M','Ʌ':'V','Ꝟ':'V','Ʋ':'V','Ⱳ':'W','Ƴ':'Y','Ỿ':'Y','Ɏ':'Y','Ⱬ':'Z','Ȥ':'Z','Ƶ':'Z','Œ':'OE','ᴀ':'A','ᴁ':'AE','ʙ':'B','ᴃ':'B','ᴄ':'C','ᴅ':'D','ᴇ':'E','ꜰ':'F','ɢ':'G','ʛ':'G','ʜ':'H','ɪ':'I','ʁ':'R','ᴊ':'J','ᴋ':'K','ʟ':'L','ᴌ':'L','ᴍ':'M','ɴ':'N','ᴏ':'O','ɶ':'OE','ᴐ':'O','ᴕ':'OU','ᴘ':'P','ʀ':'R','ᴎ':'N','ᴙ':'R','ꜱ':'S','ᴛ':'T','ⱻ':'E','ᴚ':'R','ᴜ':'U','ᴠ':'V','ᴡ':'W','ʏ':'Y','ᴢ':'Z','ᶏ':'a','ẚ':'a','ⱥ':'a','æ':'ae','ꜻ':'av','ɓ':'b','ᵬ':'b','ᶀ':'b','ƀ':'b','ƃ':'b','ɵ':'o','ɕ':'c','ƈ':'c','ȼ':'c','ȡ':'d','ɗ':'d','ᶑ':'d','ᵭ':'d','ᶁ':'d','đ':'d','ɖ':'d','ƌ':'d','ı':'i','ȷ':'j','ɟ':'j','ʄ':'j','ǆ':'dz','ⱸ':'e','ᶒ':'e','ɇ':'e','ꝫ':'et','ƒ':'f','ᵮ':'f','ᶂ':'f','ɠ':'g','ᶃ':'g','ǥ':'g','ⱨ':'h','ɦ':'h','ħ':'h','ƕ':'hv','ᶖ':'i','ɨ':'i','ꝺ':'d','ꝼ':'f','ᵹ':'g','ꞃ':'r','ꞅ':'s','ꞇ':'t','ꝭ':'is','ʝ':'j','ɉ':'j','ⱪ':'k','ꝃ':'k','ƙ':'k','ᶄ':'k','ꝁ':'k','ꝅ':'k','ƚ':'l','ɬ':'l','ȴ':'l','ⱡ':'l','ꝉ':'l','ŀ':'l','ɫ':'l','ᶅ':'l','ɭ':'l','ł':'l','ſ':'s','ẜ':'s','ẝ':'s','ɱ':'m','ᵯ':'m','ᶆ':'m','ȵ':'n','ɲ':'n','ƞ':'n','ᵰ':'n','ᶇ':'n','ɳ':'n','ꝋ':'o','ꝍ':'o','ⱺ':'o','ø':'o','ƣ':'oi','ɛ':'e','ᶓ':'e','ɔ':'o','ᶗ':'o','ȣ':'ou','ꝓ':'p','ƥ':'p','ᵱ':'p','ᶈ':'p','ꝕ':'p','ᵽ':'p','ꝑ':'p','ꝙ':'q','ʠ':'q','ɋ':'q','ꝗ':'q','ɾ':'r','ᵳ':'r','ɼ':'r','ᵲ':'r','ᶉ':'r','ɍ':'r','ɽ':'r','ↄ':'c','ꜿ':'c','ɘ':'e','ɿ':'r','ʂ':'s','ᵴ':'s','ᶊ':'s','ȿ':'s','ɡ':'g','ᴑ':'o','ᴓ':'o','ᴝ':'u','ȶ':'t','ⱦ':'t','ƭ':'t','ᵵ':'t','ƫ':'t','ʈ':'t','ŧ':'t','ᵺ':'th','ɐ':'a','ᴂ':'ae','ǝ':'e','ᵷ':'g','ɥ':'h','ʮ':'h','ʯ':'h','ᴉ':'i','ʞ':'k','ꞁ':'l','ɯ':'m','ɰ':'m','ᴔ':'oe','ɹ':'r','ɻ':'r','ɺ':'r','ⱹ':'r','ʇ':'t','ʌ':'v','ʍ':'w','ʎ':'y','ᶙ':'u','ᵫ':'ue','ꝸ':'um','ⱴ':'v','ꝟ':'v','ʋ':'v','ᶌ':'v','ⱱ':'v','ⱳ':'w','ᶍ':'x','ƴ':'y','ỿ':'y','ɏ':'y','ʑ':'z','ⱬ':'z','ȥ':'z','ᵶ':'z','ᶎ':'z','ʐ':'z','ƶ':'z','ɀ':'z','œ':'oe','ₓ':'x'};
   const stringWithoutAccents = string
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
@@ -62,23 +70,6 @@ function convertToAscii(string) {
   );
 }
 
-function verifyMessage(messageString, limit) {
-  if (messageString.length > limit) {
-    return false
-  } else if (emptyRegex.test(messageString)) {
-    return false
-  } else if (numberRegex.test(messageString)) {
-    return false
-  } else if (specialCaracterRegex.test(messageString)) {
-    return false
-  } else if (numberRegex.test(messageString)) {
-    return false
-  } else if (emojiRegex.test(messageString)) {
-    return false
-  }
-  return true
-}
-
 socket.emit("getMessages"); //Demande la liste des messages
 
 socket.on("messages", (message) => {
@@ -86,13 +77,11 @@ socket.on("messages", (message) => {
 
 socket.on("message", (message) => {
   messageList.innerHTML +=
-    "<div> <span class='user'> Username :" +
+    "<div class='message-container'><div><span class='user'>" +
     message.user.name +
-    "</span> <span class='message'> Message :" +
+    "</span> <br><span class='message'>" +
     message.value +
-    "</span> <span class='date'>" +
-    new Date(message.time) +
-    "</span> <div> </br>";
+    "</span> <div/><div/>";
 
   messageList.scrollTo(0, messageList.scrollHeight); // scroller en bas pour voir le dernier message
 
@@ -105,7 +94,7 @@ socket.on("message", (message) => {
 
 pseudoForm.addEventListener("submit", (event) => {
   event.preventDefault();
-
+  
   socket.emit("setUsername", pseudo.value);
 });
 
@@ -114,7 +103,7 @@ messageForm.addEventListener("submit", (event) => {
 });
 
 socket.emit("getUsers"); // Demande a recupere la liste complete des users
-socket.on("users", (user) => { }); // Récupère la liste complete des users
+socket.on("users", (user) => {}); // Récupère la liste complete des users
 socket.on(
   "updateUsername",
   (user) => (userList.innerHTML += user.name + "</br>")
@@ -136,6 +125,7 @@ function isError(isError, messageError) {
   }
 }
 
+var limit = 15;
 result.textContent = limit + "/" + limit + " caractères restants";
 
 if (message.value.length == 0) {
@@ -166,7 +156,7 @@ message.addEventListener("input", function () {
     isError(true, "Votre message ne peut pas être vide")
   } else if (numberRegex.test(message.value)) {
     isError(true, "Votre message ne doit pas contenir de chiffre")
-  } else if (specialCaracterRegex.test(message.value)) {
+  }else if (specialCaracterRegex.test(message.value)) {
     isError(true, "Votre message ne doit pas contenir de caractère spécial")
   } else if (numberRegex.test(message.value)) {
     isError(true, "Votre message ne doit pas contenir de chiffre")
