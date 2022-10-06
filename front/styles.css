@@ -112,6 +112,7 @@ body {
     color: pink;
   }
 }
+
 #sendMessage :disabled {
   cursor: not-allowed;
 }
@@ -150,7 +151,36 @@ body {
   text-align: end;
 }
 
+.couch {
+  position: absolute;
+  width: fit-content;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.couch img {
+  width: 55vw;
+}
 
+.light {
+  position: absolute;
+  width: fit-content;
+  bottom: 10;
+  left: 10%;
+}
+.light img {
+  width: 10vw;
+}
+
+.tv {
+  position: absolute;
+  width: fit-content;
+  bottom: 0;
+  left: 68%;
+}
+.tv img {
+  width: 25vw;
+}
 
 /* .couch-up {
   position: absolute;
