@@ -213,6 +213,7 @@ function isError(isError, messageError) {
   }
 }
 
+
 result.textContent = limit + "/" + limit + " characters left";
 
 if (message.value.length == 0) {
