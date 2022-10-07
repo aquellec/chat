@@ -137,8 +137,10 @@ body {
 
 
 .letter img {
-  max-width: 50px;
-  max-height: 50px;
+  min-width: 25px;
+  min-height: 50px;
+  max-width: 4vw;
+  max-height: 4vw;
 }
 
 .letter.off::before {
@@ -236,6 +238,16 @@ body {
   width: fit-content;
   /* background-color: wheat; */
   margin: 10px 20px;
+}
+
+/* ------------- */
+
+/* USERLIST */
+#userList {
+  max-width: 300px;
+  width: fit-content;
+  height: 45%;
+  margin-left: 3vw;
 }
 
 /* ------------- */
