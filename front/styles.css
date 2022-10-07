@@ -417,14 +417,13 @@ body {
 }
 
 .light #on {
-  /* width: 80px;
-  height: 80px;
-  background: radial-gradient(circle, rgba(245, 251, 63, 0.38561362044817926) 0%, rgba(245, 251, 63, 0) 100%);
-  display: block; */
-  /* margin: auto;
-  width: 15vw;
-  min-width: 150px;
-  display: block; */
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(245,251,63,0.38561362044817926) 0%, rgba(245,251,63,0) 34%, rgba(245,251,63,0) 100%);
+  left: 50%;
+  transform: translate(-50%, -30%);
+  display: none;
 }
 
 .tv {

@@ -136,6 +136,8 @@ function renderUserList(userArray) {
   userArray.forEach(user => {
     userList.innerHTML += user.name + "</br>"
   })
+  userList.scrollTo(0, userList.scrollHeight); // scroller en bas pour voir le dernier message
+
 }
 
 function updateAndRenderUserArray(newUser) {
@@ -153,11 +155,11 @@ function updateAndRenderUserArray(newUser) {
     })
 
     if (!isInList) {
-      // blinkBigLight()
+      blinkBigLight()
       userArray.push(newUser)
     }
   } else {
-    // blinkBigLight()
+    blinkBigLight()
     userArray.push(newUser)
   }
   console.log("userArray : ", userArray);
@@ -318,14 +320,11 @@ function lightTheLamp(isOn) {
 
 function lightTheBigLamp(isOn) {
   let lampOn = document.getElementById("on")
-  let lampOff = document.getElementById("off")
 
   if (isOn) {
     lampOn.style.display = "block"// On allume l'ampoule
-    lampOff.style.display = "none" 
   } else {
     lampOn.style.display = "none" // On allume l'ampoule
-    lampOff.style.display = "block" 
   }
 }
 
