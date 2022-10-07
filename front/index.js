@@ -1,7 +1,5 @@
 const socket = io("https://whispering-chamber-09886.herokuapp.com");
 
-const pseudo = document.getElementById("pseudo");
-const pseudoForm = document.getElementById("pseudoForm");
 const messageForm = document.getElementById("messageForm");
 const messageList = document.getElementById("messageList");
 const sendMessage = document.getElementById("sendMessage");
@@ -27,6 +25,10 @@ const firstBlinkTime = 900; // On met 900ms à allumer
 const secBlinkTime = firstBlinkTime + 100 // On met 100ms à éteindre
 const thirdBlinkTime = secBlinkTime + 100 // On met 100ms à allumer
 const fourthBlinkTime = thirdBlinkTime + 500 // 500ms à éteindre 
+
+if(localStorage.isConnected !== "true"){
+  window.location.href = 'login.html';
+}
 
 function verifyMessage(msg, limit) {
   if (msg.length > limit) {
@@ -129,6 +131,15 @@ function renderMessageList(message) {
 
   messageList.scrollTo(0, messageList.scrollHeight); // scroller en bas pour voir le dernier message
 }
+socket.emit("setUsername", localStorage.pseudo);
+
+socket.emit("getMessages"); //Demande la liste des messages
+
+socket.on("messages", (message) => {
+});
+
+socket.on("message", (message) => {
+})
 
 socket.emit("getMessages"); //Demande la liste des messages
 
@@ -138,24 +149,13 @@ socket.on("messages", (messages) => {
 socket.on("message", (message) => {
   if (verifyMessage(message.value, limit)) {
     renderMessageList(message)
-    console.log("file d'attente", fileAttente);
     if (fileAttente.length > 0) callLightning = false;
     fileAttente.push(message);
-    console.log("on a reçu un message : ", message.value);
-    console.log("callLightning", callLightning);
     if (callLightning) lightning();
   }
 }); // Reçoit l'historique message par message, possibilité de filtrer par ID
 
-pseudoForm.addEventListener("submit", (event) => {
-  event.preventDefault();
 
-  socket.emit("setUsername", pseudo.value);
-});
-
-messageForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-});
 
 socket.emit("getUsers"); // Demande a recupere la liste complete des users
 socket.on("users", (user) => { }); // Récupère la liste complete des users
