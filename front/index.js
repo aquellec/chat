@@ -267,7 +267,7 @@ function lightning() {
 
     let letters = msg.value.split(""); // séparer les lettres
     let currentUser = msg.user.name; // Récupère le username courant (du message affiché)
-    one.textContent = currentUser;
+    one.innerHTML = "From <br>" + currentUser;
 
     letters.forEach((letter, index) => {
       setTimeout(() => {
@@ -284,13 +284,18 @@ function lightning() {
             blinkLight();
             setTimeout(() => {
               fileAttente.splice(0, 1)
+              one.innerHTML = "";
               lightning()
             }, fourthBlinkTime + 1000)
           }
         }, 900);
       }, index * 1000);
     });
-    if (fileAttente.length == 0) callLightning = true
+
+    
+    if (fileAttente.length == 0){
+      callLightning = true
+    } 
   }
   callLightning = true
 }

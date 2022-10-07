@@ -1,3 +1,8 @@
+
+@font-face {
+  font-family: BTTF;
+  src: url(public/font/BTTF.ttf);
+}
 html,
 body {
   padding: 0;
@@ -378,6 +383,7 @@ body {
 }
 
 #result {
+  font-size: 13px;
   text-align: end;
   margin-top: 5px;
   color: #F5F5F5;
@@ -456,14 +462,21 @@ body {
   z-index: 2;
 }
 
+.user {
+  font-family: BTTF;
+  text-transform: lowercase;
+}
+
 #one {
   display: block;
   position: relative;
-  margin-top: -65px;
+  margin-top: -75px;
   margin-right: 63px;
   text-align: center;
   width: 150px;
   z-index: 1;
+  font-family: BTTF;
+  text-transform: lowercase;
 }
 
 #two {
