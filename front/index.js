@@ -26,7 +26,7 @@ const secBlinkTime = firstBlinkTime + 100 // On met 100ms à éteindre
 const thirdBlinkTime = secBlinkTime + 100 // On met 100ms à allumer
 const fourthBlinkTime = thirdBlinkTime + 500 // 500ms à éteindre 
 
-if(localStorage.isConnected !== "true"){
+if (localStorage.isConnected !== "true") {
   window.location.href = 'login.html';
 }
 
@@ -131,6 +131,37 @@ function renderMessageList(message) {
 
   messageList.scrollTo(0, messageList.scrollHeight); // scroller en bas pour voir le dernier message
 }
+
+function renderUserList(userArray) {
+  userArray.forEach(user => {
+    userList.innerHTML += user.name + "</br>"
+  })
+}
+
+function updateAndRenderUserArray(newUser) {
+  console.log("newUser : ", newUser);
+  let isInList = false
+  if (userArray.length > 0) {
+    userArray.forEach(user => {
+      if (user.id == newUser.id) {
+        isInList = true
+        if (user.name !== newUser.name) {
+          user.name = newUser.name
+        }
+      }
+    })
+
+    if (!isInList) {
+      userArray.push(newUser)
+    }
+  } else {
+    userArray.push(newUser)
+  }
+  console.log("userArray : ", userArray);
+  userList.innerHTML = ""
+  renderUserList(userArray)
+}
+
 socket.emit("setUsername", localStorage.pseudo);
 
 socket.emit("getMessages"); //Demande la liste des messages
@@ -161,7 +192,9 @@ socket.emit("getUsers"); // Demande a recupere la liste complete des users
 socket.on("users", (user) => { }); // Récupère la liste complete des users
 socket.on(
   "updateUsername",
-  user => renderUserList(user)
+  user => {
+    updateAndRenderUserArray(user)
+  }
 ); // // Reçoit la liste des users 1 par 1
 
 function isError(isError, messageError) {
@@ -221,9 +254,7 @@ message.addEventListener("input", function () {
   }
 });
 
-function renderUserList(newUser) {
-  userList.innerHTML += newUser.name + "</br>"
-}
+
 
 function lightning() {
   callLightning = false;
