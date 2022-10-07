@@ -205,7 +205,7 @@ function isError(isError, messageError) {
     iconGood.style.display = "none";
     iconWrong.style.display = "block";
   } else {
-    result.textContent = limit - message.value.length + "/" + limit + " caractères restants"
+    result.textContent = limit - message.value.length + "/" + limit + " characters left"
     sendMessage.removeAttribute("disabled", "disabled");
     result.style.color = "#F5F5F5";
     iconWrong.style.display = "none";
@@ -213,7 +213,7 @@ function isError(isError, messageError) {
   }
 }
 
-result.textContent = limit + "/" + limit + " caractères restants";
+result.textContent = limit + "/" + limit + " characters left";
 
 if (message.value.length == 0) {
   sendMessage.setAttribute("disabled", "disabled");
@@ -226,7 +226,7 @@ sendMessage.addEventListener("click", () => {
     message.value = convertToAscii(message.value);
     socket.emit("message", message.value);
     message.value = "";
-    isError(true, "Vous ne pouvez envoyer un message que toutes les 10 secondes")
+    isError(true, "You can only send a message every 10 seconds")
     message.disabled = true;
     await new Promise((resolve) => setTimeout(resolve, 10000));
     isError(false)
@@ -238,17 +238,15 @@ sendMessage.addEventListener("click", () => {
 message.addEventListener("input", function () {
   var textLength = message.value.length;
   if (textLength > limit) {
-    isError(true, textLength + "/" + limit + " limite de caractères atteinte")
+    isError(true, textLength + "/" + limit + " character limit reached")
   } else if (emptyRegex.test(message.value)) {
-    isError(true, "Votre message ne peut pas être vide")
+    isError(true, "Your message cannot be empty")
   } else if (numberRegex.test(message.value)) {
-    isError(true, "Votre message ne doit pas contenir de chiffre")
+    isError(true, "Your message must not contain a number")
   } else if (specialCaracterRegex.test(message.value)) {
-    isError(true, "Votre message ne doit pas contenir de caractère spécial")
-  } else if (numberRegex.test(message.value)) {
-    isError(true, "Votre message ne doit pas contenir de chiffre")
+    isError(true, "Your message must not contain any special character")
   } else if (emojiRegex.test(message.value)) {
-    isError(true, "Votre message ne doit pas contenir d'émoji")
+    isError(true, "Your message must not contain emoji")
   } else {
     isError(false)
   }
