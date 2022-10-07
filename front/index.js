@@ -1,7 +1,5 @@
 const socket = io("https://whispering-chamber-09886.herokuapp.com");
 
-const pseudo = document.getElementById("pseudo");
-const pseudoForm = document.getElementById("pseudoForm");
 const messageForm = document.getElementById("messageForm");
 const messageList = document.getElementById("messageList");
 const sendMessage = document.getElementById("sendMessage");
@@ -22,6 +20,9 @@ const numberRegex = /\d/;
 var limit = 15;
 var fileAttente = [];
 
+if(localStorage.isConnected !== "true"){
+  window.location.href = 'login.html';
+}
 
 function verifyMessage(msg, limit) {
   if (msg.length > limit) {
@@ -114,6 +115,8 @@ function convertToAscii(string) {
   );
 }
 
+socket.emit("setUsername", localStorage.pseudo);
+
 socket.emit("getMessages"); //Demande la liste des messages
 
 socket.on("messages", (message) => {
@@ -137,15 +140,7 @@ socket.on("message", (message) => {
   }
 }); // Reçoit l'historique message par message, possibilité de filtrer par ID
 
-pseudoForm.addEventListener("submit", (event) => {
-  event.preventDefault();
 
-  socket.emit("setUsername", pseudo.value);
-});
-
-messageForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-});
 
 socket.emit("getUsers"); // Demande a recupere la liste complete des users
 socket.on("users", (user) => { }); // Récupère la liste complete des users
