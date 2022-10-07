@@ -201,13 +201,13 @@ function isError(isError, messageError) {
   if (isError) {
     result.textContent = messageError
     sendMessage.setAttribute('disabled', 'disabled')
-    result.style.color = "#6C0D13";
+    result.style.color = "#A61E22";
     iconGood.style.display = "none";
     iconWrong.style.display = "block";
   } else {
     result.textContent = limit - message.value.length + "/" + limit + " caractères restants"
     sendMessage.removeAttribute("disabled", "disabled");
-    result.style.color = "#192A3E";
+    result.style.color = "#F5F5F5";
     iconWrong.style.display = "none";
     iconGood.style.display = "block";
   }
