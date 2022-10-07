@@ -258,7 +258,7 @@ body {
   height: 40%;
   margin-left: 3vw;
   overflow: scroll;
-  font: BTTF;
+  font-family: BTTF;
 }
 
 #userList::-webkit-scrollbar {

@@ -134,7 +134,7 @@ function renderMessageList(message) {
 
 function renderUserList(userArray) {
   userArray.forEach(user => {
-    userList.innerHTML += user.name + "</br>"
+    userList.innerHTML += user.name.toLowerCase() + "</br>"
   })
   userList.scrollTo(0, userList.scrollHeight); // scroller en bas pour voir le dernier message
 
