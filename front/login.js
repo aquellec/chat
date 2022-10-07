@@ -4,6 +4,9 @@ const pseudo = document.getElementById("pseudo");
 const pseudoForm = document.getElementById("pseudoForm");
 const sendPseudo = document.getElementById("sendPseudo");
 
+let limit = 10;
+
+
 socket.emit("getUsers");
 socket.on("users", (user) => { 
     console.log(user)
