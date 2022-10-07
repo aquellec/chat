@@ -11,6 +11,17 @@
     margin: 0;
     padding: 0;
   }
+
+  @font-face {
+    font-family: BTTF;
+    src: url(public/font/BTTF.ttf);
+  }
+
+  @font-face {
+    font-family: Tifax;
+    src: url(public/font/Tifax-AJ7g.ttf);
+  }
+
   .main {
     width: 100vw;
     height: 100vh;
@@ -29,13 +40,15 @@
   #pseudoForm {
     position: absolute;
     z-index: 2;
-    top: 280px;
-    left: 48px;
+    top: 37vh;
+    left: 8vh;
     display: flex;
-    width: 250px;
+    width: 43vh;
     justify-content: center;
     align-content: center;
-    flex-direction: column;  
+    flex-direction: column;
+    gap: 4vh;
+    align-items: center;
     }
 
   #pseudo {
@@ -47,6 +60,7 @@
   border-radius: 100px;
   color: rgba(245, 245, 245, 0.45);
   padding: 0 10px;
+  font-family: Tifax;
   }
   #pseudo::placeholder{
     color: rgba(245, 245, 245, 0.45);
@@ -60,6 +74,24 @@
   }
   #error {
     color: #A61E22;
+  }
+
+  #sendPseudo {
+    font-family: BTTF;
+    padding: 12px 32px;
+    width: 20vh;
+    /* height: 10vh; */
+    background: #192A3E;
+    border: none;
+    border-radius: 100px;
+    color: #F5F5F5;
+    font-size: 1em;
+    text-transform: lowercase;
+  }
+
+  #sendPseudo:hover{
+    background: #101E2B;
+    cursor: pointer;
   }
 </style>
 <body>
