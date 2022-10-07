@@ -19,9 +19,14 @@ const specialCaracterRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 const emojiRegex = /\p{Emoji}/u;
 const emptyRegex = /^ *$/;
 const numberRegex = /\d/;
-var limit = 15;
-var fileAttente = [];
-
+let userArray = [];
+let limit = 15;
+let fileAttente = [];
+let callLightning = true;
+const firstBlinkTime = 900; // On met 900ms à allumer
+const secBlinkTime = firstBlinkTime + 100 // On met 100ms à éteindre
+const thirdBlinkTime = secBlinkTime + 100 // On met 100ms à allumer
+const fourthBlinkTime = thirdBlinkTime + 500 // 500ms à éteindre 
 
 function verifyMessage(msg, limit) {
   if (msg.length > limit) {
@@ -59,11 +64,11 @@ function asTabs(node) {
   });
   node.insertBefore(tabList, node.firstChild);
   function selectTab(n) {
-    tabs.forEach(function(tab, i) {
-      if (i == n){
+    tabs.forEach(function (tab, i) {
+      if (i == n) {
         // document.querySelector(".tv-button-" + i ).innerHTML = `<svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="#192A3E"/>
         // <circle cx="20.0002" cy="20" r="12.6316" fill="#213B54"/></svg>`
-        document.querySelector(".tv-button-" + i ).innerHTML = `<svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        document.querySelector(".tv-button-" + i).innerHTML = `<svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_130_1086)">
         <circle cx="20" cy="20" r="20" fill="#192A3E"/>
         <g filter="url(#filter0_f_130_1086)">
@@ -92,8 +97,8 @@ function asTabs(node) {
         </defs>
         </svg>`
         tab.style.display = "block";
-      }else{
-        document.querySelector(".tv-button-" + i ).innerHTML = `<svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="#192A3E"/>
+      } else {
+        document.querySelector(".tv-button-" + i).innerHTML = `<svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="#192A3E"/>
         <circle cx="20.0002" cy="20" r="12.6316" fill="#101E2B"/> </svg>`
         tab.style.display = "none"
       }
@@ -114,12 +119,7 @@ function convertToAscii(string) {
   );
 }
 
-socket.emit("getMessages"); //Demande la liste des messages
-
-socket.on("messages", (message) => {
-});
-
-socket.on("message", (message) => {
+function renderMessageList(message) {
   messageList.innerHTML +=
     "<div class='message-container'><div><span class='user'>" +
     message.user.name +
@@ -128,12 +128,22 @@ socket.on("message", (message) => {
     "</span> <div/><div/>";
 
   messageList.scrollTo(0, messageList.scrollHeight); // scroller en bas pour voir le dernier message
+}
 
+socket.emit("getMessages"); //Demande la liste des messages
+
+socket.on("messages", (messages) => {
+});
+
+socket.on("message", (message) => {
   if (verifyMessage(message.value, limit)) {
+    renderMessageList(message)
+    console.log("file d'attente", fileAttente);
+    if (fileAttente.length > 0) callLightning = false;
     fileAttente.push(message);
     console.log("on a reçu un message : ", message.value);
-    console.log("file d'attente", fileAttente);
-    lightning();
+    console.log("callLightning", callLightning);
+    if (callLightning) lightning();
   }
 }); // Reçoit l'historique message par message, possibilité de filtrer par ID
 
@@ -151,7 +161,7 @@ socket.emit("getUsers"); // Demande a recupere la liste complete des users
 socket.on("users", (user) => { }); // Récupère la liste complete des users
 socket.on(
   "updateUsername",
-  (user) => (userList.innerHTML += user.name + "</br>")
+  user => renderUserList(user)
 ); // // Reçoit la liste des users 1 par 1
 
 function isError(isError, messageError) {
@@ -170,7 +180,6 @@ function isError(isError, messageError) {
   }
 }
 
-var limit = 15;
 result.textContent = limit + "/" + limit + " caractères restants";
 
 if (message.value.length == 0) {
@@ -212,32 +221,78 @@ message.addEventListener("input", function () {
   }
 });
 
+function renderUserList(newUser) {
+  userList.innerHTML += newUser.name + "</br>"
+}
+
 function lightning() {
-  console.log("lightning");
-  const msg = fileAttente[fileAttente.length - 1];
-  console.log("message : ", msg.value);
+  callLightning = false;
+  console.log("\nlightning");
 
-  let letters = msg.value.split(""); // séparer les lettres
-  let currentUser = msg.user.name;
-  one.textContent = currentUser
-  console.log("currentUser : ", currentUser);
-  letters.forEach((letter, index) => {
-    setTimeout(() => {
-      let letterById = document.getElementById(letter.toUpperCase());
-      letterById.classList.remove("off")
-      letterById.classList.add("on")
-
-      setTimeout(() => {
-        letterById.classList.remove("on")
-        letterById.classList.add("off")
-      }, 900);
-    }, index * 1000);
-  });
-
-  fileAttente.splice(fileAttente.length - 1, 1)
   if (fileAttente.length > 0) {
-    setTimeout(() => {
-      lightning();
-    }, 1000);
+    const msg = fileAttente[0];
+
+    let letters = msg.value.split(""); // séparer les lettres
+    let currentUser = msg.user.name; // Récupère le username courant (du message affiché)
+    one.textContent = currentUser;
+
+    letters.forEach((letter, index) => {
+      setTimeout(() => {
+        let letterById = document.getElementById(letter.toUpperCase());
+        letterById.classList.remove("off") // On allume l'ampoule
+        letterById.classList.add("on")
+
+        setTimeout(() => {
+          letterById.classList.remove("on") // On eteint l'ampoule
+          letterById.classList.add("off")
+
+          if (index == letters.length - 1) { // Si on se trouve sur la dernière lettre du message
+            console.log("On doit faire clignoter les ampoules du message : ", msg.value);
+            blinkLight();
+            setTimeout(() => {
+              fileAttente.splice(0, 1)
+              lightning()
+            }, fourthBlinkTime + 1000)
+          }
+        }, 900);
+      }, index * 1000);
+    });
+    if (fileAttente.length == 0) callLightning = true
   }
+  callLightning = true
+}
+
+function lightTheLamp(isOn) {
+  lettersByClassName = document.getElementsByClassName("letter")
+
+  if (isOn) {
+    for (let lamp = 0; lamp < lettersByClassName.length; lamp++) {
+      lettersByClassName[lamp].classList.remove("off") // On allume l'ampoule
+      lettersByClassName[lamp].classList.add("on")
+    }
+  } else {
+    for (let lamp = 0; lamp < lettersByClassName.length; lamp++) {
+      lettersByClassName[lamp].classList.remove("on") // On éteint l'ampoule
+      lettersByClassName[lamp].classList.add("off")
+    }
+  }
+}
+
+function blinkLight() {
+  setTimeout(() => {
+    console.log("On allume");
+    lightTheLamp(true)
+  }, firstBlinkTime)
+  setTimeout(() => {
+    console.log("On éteint");
+    lightTheLamp(false)
+  }, secBlinkTime)
+  setTimeout(() => {
+    console.log("On allume");
+    lightTheLamp(true)
+  }, thirdBlinkTime)
+  setTimeout(() => {
+    console.log("On éteint");
+    lightTheLamp(false)
+  }, fourthBlinkTime)
 }
