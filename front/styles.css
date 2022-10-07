@@ -136,10 +136,11 @@ body {
   top: 30px;
 }
 
-
 .letter img {
-  max-width: 50px;
-  max-height: 50px;
+  min-width: 25px;
+  min-height: 50px;
+  max-width: 4vw;
+  max-height: 4vw;
 }
 
 .letter.off::before {
@@ -193,6 +194,7 @@ body {
   top: -29px;
   left: -20%;
 }
+
 .letter.C.on::before,
 .letter.G.on::before,
 .letter.K.on::before,
@@ -210,6 +212,7 @@ body {
   top: -29px;
   left: -20%;
 }
+
 .letter.D.on::before,
 .letter.H.on::before,
 .letter.L.on::before,
@@ -250,7 +253,13 @@ body {
   height: 40%;
   margin-left: 3vw;
   overflow: scroll;
+  font: BTTF;
 }
+
+#userList::-webkit-scrollbar {
+  display: none;
+}
+
 /* ------------- */
 
 #messageList {
@@ -364,7 +373,7 @@ body {
 
 
 
-#sendMessage svg{
+#sendMessage svg {
   width: 35px;
 }
 
@@ -389,14 +398,27 @@ body {
 
 .light {
   position: absolute;
-  width: fit-content;
+  width: 400px;
   bottom: 30px;
-  left: 10%;
+  left: 2%;
 }
 
-.light img {
+.light #off {
+  margin: auto;
   width: 10vw;
   min-width: 100px;
+  display: block;
+}
+
+.light #on {
+  /* width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(245, 251, 63, 0.38561362044817926) 0%, rgba(245, 251, 63, 0) 100%);
+  display: block; */
+  /* margin: auto;
+  width: 15vw;
+  min-width: 150px;
+  display: block; */
 }
 
 .tv {
@@ -419,7 +441,7 @@ body {
   cursor: pointer;
 }
 
-.tv > div{
+.tv>div {
   position: relative;
   right: 0;
   margin-right: 0;
@@ -451,6 +473,7 @@ body {
   margin-top: -300px;
   z-index: 1;
 }
+
 /* .tv img {
   width: 25vw;
   min-width: 300px;

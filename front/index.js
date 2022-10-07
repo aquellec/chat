@@ -140,7 +140,8 @@ function renderUserList(userArray) {
 
 function updateAndRenderUserArray(newUser) {
   console.log("newUser : ", newUser);
-  let isInList = false
+  let isInList = false;
+
   if (userArray.length > 0) {
     userArray.forEach(user => {
       if (user.id == newUser.id) {
@@ -152,9 +153,11 @@ function updateAndRenderUserArray(newUser) {
     })
 
     if (!isInList) {
+      // blinkBigLight()
       userArray.push(newUser)
     }
   } else {
+    // blinkBigLight()
     userArray.push(newUser)
   }
   console.log("userArray : ", userArray);
@@ -293,7 +296,7 @@ function lightning() {
 }
 
 function lightTheLamp(isOn) {
-  lettersByClassName = document.getElementsByClassName("letter")
+  let lettersByClassName = document.getElementsByClassName("letter")
 
   if (isOn) {
     for (let lamp = 0; lamp < lettersByClassName.length; lamp++) {
@@ -305,6 +308,19 @@ function lightTheLamp(isOn) {
       lettersByClassName[lamp].classList.remove("on") // On éteint l'ampoule
       lettersByClassName[lamp].classList.add("off")
     }
+  }
+}
+
+function lightTheBigLamp(isOn) {
+  let lampOn = document.getElementById("on")
+  let lampOff = document.getElementById("off")
+
+  if (isOn) {
+    lampOn.style.display = "block"// On allume l'ampoule
+    lampOff.style.display = "none" 
+  } else {
+    lampOn.style.display = "none" // On allume l'ampoule
+    lampOff.style.display = "block" 
   }
 }
 
@@ -324,5 +340,24 @@ function blinkLight() {
   setTimeout(() => {
     console.log("On éteint");
     lightTheLamp(false)
+  }, fourthBlinkTime)
+}
+
+function blinkBigLight() {
+  setTimeout(() => {
+    console.log("On allume");
+    lightTheBigLamp(true)
+  }, firstBlinkTime)
+  setTimeout(() => {
+    console.log("On éteint");
+    lightTheBigLamp(false)
+  }, secBlinkTime)
+  setTimeout(() => {
+    console.log("On allume");
+    lightTheBigLamp(true)
+  }, thirdBlinkTime)
+  setTimeout(() => {
+    console.log("On éteint");
+    lightTheBigLamp(false)
   }, fourthBlinkTime)
 }
